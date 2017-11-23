@@ -30,6 +30,7 @@ public class MainController implements Initializable{
        
     }
     
+    @FXML
     //when user click on createReminderButton
     //this method will be called
     //Loads CreateReminder.fxml
