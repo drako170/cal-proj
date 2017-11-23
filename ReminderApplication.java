@@ -14,7 +14,8 @@ import javafx.scene.layout.BorderPane;
 
 public class ReminderApplication extends Application{
 	
-
+	//DList that contains reminder objects
+	protected static DList<Reminder> list = new DList<Reminder>();
     
 	public void start(Stage primaryStage) {
 		try {
