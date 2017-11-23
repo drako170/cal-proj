@@ -28,11 +28,6 @@ public class CreateReminderController implements Initializable {
    
    @FXML
    private Button createButton;
-   
-   @FXML
-   private Button printButton;
-   
-   private DList<Reminder> list = new DList<Reminder>();
   
    @Override
    public void initialize(URL location, ResourceBundle resources) {
@@ -43,6 +38,8 @@ public class CreateReminderController implements Initializable {
  
    // When user click on myButton
    // this method will be called.
+   // Creates new reminder object and adds it to static DList variable
+   // Prints "Reminder Created!" to console
    public void createReminder(ActionEvent event) {
        System.out.println("Reminder Created!");
       
@@ -51,21 +48,6 @@ public class CreateReminderController implements Initializable {
        list.addToLast(newReminder);
    }
    
-   public void printReminders(ActionEvent event) {
-	   
-	   DLLNode<Reminder> node = list.getHeader();
-	   
-	   for(int i = 0; i < list.getSize(); i++) {
-		   
-		   Reminder item = (Reminder) node.getInfo();
-		   System.out.println(item.getMonth() + " " + item.getDay() + " " + item.getTime()+ ": " + item.getInfo());
-		   
-		   node = (DLLNode<Reminder>) node.getLink();
-	   }
-   }
-   
-   public void openCreateNewReminder() {
-	   
-   }
+
   
 }
