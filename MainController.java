@@ -17,7 +17,7 @@ import javafx.stage.Window;
 
 public class MainController implements Initializable{
 
-	@FXML
+    @FXML
     private Button createReminderButton;
 
     @FXML
@@ -30,7 +30,9 @@ public class MainController implements Initializable{
        
     }
     
-    @FXML
+    //when user click on createReminderButton
+    //this method will be called
+    //Loads CreateReminder.fxml
     void createReminder(ActionEvent event) {
     	try {
     		Window primaryWindow = ((Node)event.getSource()).getScene().getWindow();
@@ -41,8 +43,6 @@ public class MainController implements Initializable{
     		stage.setScene(new Scene(root1));  
     		stage.setTitle("New Reminder");
     		
-
-            
     		// Specifies the modality for new window.
     		stage.initModality(Modality.WINDOW_MODAL);
     		
@@ -57,5 +57,22 @@ public class MainController implements Initializable{
     	} catch(Exception e) {
     		System.out.println("Can't load new window");
     	}
+    }
+	
+    //When user click on viewReminderButton
+    //this method will we called
+    //Iterates through static DList variable and prints out each reminder object to the console
+    public void printReminders(ActionEvent event) {
+ 	   
+    	
+ 	   DLLNode<Reminder> node = ReminderApplication.list.getHeader();
+ 	   
+ 	   for(int i = 0; i < ReminderApplication.list.getSize(); i++) {
+ 		   
+ 		   Reminder item = (Reminder) node.getInfo();
+ 		   System.out.println(item.getMonth() + " " + item.getDay() + " " + item.getTime()+ ": " + item.getInfo());
+ 		   
+ 		   node = (DLLNode<Reminder>) node.getLink();
+ 	   }
     }
 }
