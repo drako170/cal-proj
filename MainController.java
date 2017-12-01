@@ -63,22 +63,6 @@ public class MainController implements Initializable{
     	}
     }
     
-    //When user click on viewReminderButton
-    //this method will we called
-    //Iterates through static DList variable and prints out each reminder object to the console
-    public void printReminders(ActionEvent event) {
- 	   
-    	
- 	   DLLNode<Reminder> node = ReminderApplication.list.getHeader();
- 	   
- 	   for(int i = 0; i < ReminderApplication.list.getSize(); i++) {
- 		   
- 		   Reminder item = (Reminder) node.getInfo();
- 		   System.out.println(item.getMonth() + " " + item.getDay() + " " + item.getTime()+ ": " + item.getMessage());
- 		   
- 		   node = (DLLNode<Reminder>) node.getLink();
- 	   }
-    }
     
     @FXML
     //when user click on viewRemindersButton

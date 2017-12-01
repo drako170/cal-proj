@@ -24,7 +24,7 @@ public class CreateReminderController implements Initializable {
    private TextField timeData;
    
    @FXML
-   private TextField infoData;
+   private TextField messageData;
    
    @FXML
    private Button createButton;
@@ -45,7 +45,7 @@ public class CreateReminderController implements Initializable {
    public void createReminder(ActionEvent event) {
        System.out.println("Reminder Created!");
       
-       Reminder newReminder = new Reminder(monthData.getText(),dayData.getText(),timeData.getText(),infoData.getText());
+       Reminder newReminder = new Reminder(monthData.getText(),dayData.getText(),timeData.getText(),messageData.getText());
        
        ReminderApplication.list.addToLast(newReminder);
    }
