@@ -28,6 +28,8 @@ public class CreateReminderController implements Initializable {
    
    @FXML
    private Button createButton;
+   
+
   
    @Override
    public void initialize(URL location, ResourceBundle resources) {
@@ -36,7 +38,7 @@ public class CreateReminderController implements Initializable {
       
    }
  
-   // When user click on myButton
+   // When user click on createButton
    // this method will be called.
    // Creates new reminder object and adds it to static DList variable
    // Prints "Reminder Created!" to console
@@ -45,9 +47,8 @@ public class CreateReminderController implements Initializable {
       
        Reminder newReminder = new Reminder(monthData.getText(),dayData.getText(),timeData.getText(),infoData.getText());
        
-       list.addToLast(newReminder);
+       ReminderApplication.list.addToLast(newReminder);
    }
    
-
   
 }

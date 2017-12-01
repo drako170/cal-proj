@@ -14,6 +14,6 @@
          </font>
       </Text>
       <Button fx:id="createReminderButton" layoutX="198.0" layoutY="176.0" mnemonicParsing="false" onAction="#createReminder" text="Create Reminder" />
-      <Button fx:id="viewReminderButton" layoutX="200.0" layoutY="244.0" mnemonicParsing="false" onAction="#printReminders" text="View Reminders" />
+      <Button fx:id="viewReminderButton" layoutX="200.0" layoutY="244.0" mnemonicParsing="false" onAction="#viewReminders" text="View Reminders" />
    </children>
 </AnchorPane>

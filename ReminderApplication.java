@@ -31,10 +31,11 @@ public class ReminderApplication extends Application{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 	
 	
 }

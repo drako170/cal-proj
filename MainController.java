@@ -17,11 +17,14 @@ import javafx.stage.Window;
 
 public class MainController implements Initializable{
 
-    @FXML
+	@FXML
     private Button createReminderButton;
 
     @FXML
     private Button viewReminderButton;
+    
+    @FXML
+    private DList<Reminder> list = new DList<Reminder>();
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,7 +46,7 @@ public class MainController implements Initializable{
     		Stage stage = new Stage();
     		stage.setScene(new Scene(root1));  
     		stage.setTitle("New Reminder");
-    		
+    	
     		// Specifies the modality for new window.
     		stage.initModality(Modality.WINDOW_MODAL);
     		
@@ -59,7 +62,7 @@ public class MainController implements Initializable{
     		System.out.println("Can't load new window");
     	}
     }
-	
+    
     //When user click on viewReminderButton
     //this method will we called
     //Iterates through static DList variable and prints out each reminder object to the console
@@ -71,9 +74,40 @@ public class MainController implements Initializable{
  	   for(int i = 0; i < ReminderApplication.list.getSize(); i++) {
  		   
  		   Reminder item = (Reminder) node.getInfo();
- 		   System.out.println(item.getMonth() + " " + item.getDay() + " " + item.getTime()+ ": " + item.getInfo());
+ 		   System.out.println(item.getMonth() + " " + item.getDay() + " " + item.getTime()+ ": " + item.getMessage());
  		   
  		   node = (DLLNode<Reminder>) node.getLink();
  	   }
     }
+    
+    @FXML
+    //when user click on viewRemindersButton
+    //this method will be called
+    //Loads ViewReminders.fxml
+    public void viewReminders(ActionEvent event) {
+    	try {
+    		Window primaryWindow = ((Node)event.getSource()).getScene().getWindow();
+    		
+    		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewReminders.fxml"));
+    		Parent root1 = (Parent) fxmlLoader.load();
+    		Stage stage = new Stage();
+    		stage.setScene(new Scene(root1));  
+    		stage.setTitle("Reminders Table");
+    	
+    		// Specifies the modality for new window.
+    		stage.initModality(Modality.WINDOW_MODAL);
+    		
+    		// Specifies the owner Window (parent) for new window
+    		stage.initOwner(primaryWindow);
+    		
+    		 // Set position of second window, related to primary window.
+            stage.setX(primaryWindow.getX());
+            stage.setY(primaryWindow.getY());
+            
+    		stage.show();
+    	} catch(Exception e) {
+    		System.out.println("Can't load new window");
+    	}
+    }
+    
 }

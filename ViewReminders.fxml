@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reminderApplication.ViewRemindersController">
+   <children>
+      <TableView fx:id="remindersTable" prefHeight="800.0" prefWidth="400.0">
+        <columns>
+          <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="timeCol" prefWidth="70.0" text="Time" />
+            <TableColumn fx:id="messageCol" prefWidth="254.0" text="Message" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

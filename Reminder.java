@@ -5,14 +5,16 @@ public class Reminder {
 	private String month;
 	private String day;
 	private String time;
-	private String info;
+	private String message;
+	private String date;
 	
 	
-	public Reminder(String month, String day, String time, String info){
+	public Reminder(String month, String day, String time, String message){
 		this.month = month;
 		this.day = day;
 		this.time= time;
-		this.info = info;
+		this.message = message;
+		date = month + " " + day;
 	}
 
 
@@ -46,14 +48,25 @@ public class Reminder {
 	}
 
 
-	public String getInfo() {
-		return info;
+	public String getMessage() {
+		return message;
 	}
 
 
-	public void setInfo(String info) {
-		this.info = info;
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 	
 	
 
