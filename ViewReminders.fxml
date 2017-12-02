@@ -9,9 +9,9 @@
    <children>
       <TableView fx:id="remindersTable" prefHeight="800.0" prefWidth="400.0">
         <columns>
-          <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
-          <TableColumn fx:id="timeCol" prefWidth="70.0" text="Time" />
-            <TableColumn fx:id="messageCol" prefWidth="254.0" text="Message" />
+          <TableColumn fx:id="dateCol" prefWidth="111.0" text="Date" />
+          <TableColumn fx:id="timeCol" prefWidth="68.0" text="Time" />
+            <TableColumn fx:id="messageCol" prefWidth="220.0" text="Message" />
         </columns>
       </TableView>
    </children>
