@@ -24,6 +24,9 @@ public class MainController implements Initializable{
     private Button viewReminderButton;
     
     @FXML
+    private Button closeButton;
+    
+    @FXML
     private DList<Reminder> list = new DList<Reminder>();
     
     @Override
@@ -92,6 +95,11 @@ public class MainController implements Initializable{
     	} catch(Exception e) {
     		System.out.println("Can't load new window");
     	}
+    }
+    
+    public void closeButtonClicked(ActionEvent event){
+  	  Stage stage = (Stage) closeButton.getScene().getWindow();
+  	  stage.close();
     }
     
 }

@@ -43,7 +43,6 @@ public class ViewRemindersController implements Initializable {
 	 		   String time = item.getTime();
 	 		   String message = item.getMessage();
 	 		   
-	 		   System.out.println(date + time + message);
 	 		   reminders.add(new Table(date, time, message));
 	 		   
 	 		   node = (DLLNode<Reminder>) node.getLink();

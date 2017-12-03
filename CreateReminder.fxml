@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -8,7 +11,6 @@
 
 <AnchorPane prefHeight="239.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reminderApplication.CreateReminderController">
    <children>
-      <TextField fx:id="timeData" layoutX="28.0" layoutY="109.0" promptText="HH:MM" />
       <TextField fx:id="messageData" layoutX="199.0" layoutY="109.0" />
       <Button fx:id="createButton" layoutX="59.0" layoutY="185.0" mnemonicParsing="false" onAction="#createReminder" text="Create Reminder" />
       <Text layoutX="27.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" />
@@ -16,5 +18,8 @@
       <DatePicker fx:id="datePicker" layoutX="24.0" layoutY="45.0" promptText="(MM/DD/YYYY)" />
       <Text layoutX="24.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Reminder" wrappingWidth="174.0" />
       <Button fx:id="closeButton" layoutX="251.0" layoutY="185.0" mnemonicParsing="false" onAction="#closeButtonClicked" text="Close" />
+      <ChoiceBox fx:id="choiceBox" layoutX="134.0" layoutY="109.0" prefHeight="25.0" prefWidth="47.0" />
+      <ChoiceBox fx:id="minutes" layoutX="73.0" layoutY="109.0" prefHeight="25.0" prefWidth="47.0" />
+      <ChoiceBox fx:id="hours" layoutX="24.0" layoutY="109.0" prefHeight="25.0" prefWidth="26.0" />
    </children>
 </AnchorPane>

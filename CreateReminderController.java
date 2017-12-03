@@ -1,24 +1,27 @@
 package reminderApplication;
 
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
- 
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.DatePicker;
-import javafx.stage.Window;
 import javafx.stage.Stage;
  
 public class CreateReminderController implements Initializable {
  
-   @FXML
-   private TextField timeData;
+	ObservableList<String> timeList = FXCollections.observableArrayList("AM", "PM");
+	ObservableList<Integer> hourList = FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,11,12);
+	ObservableList<String> minuteList = FXCollections.observableArrayList("00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21",
+			"22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55",
+			"56","57","58","59");
+
    
    @FXML
    private TextField messageData;
@@ -31,12 +34,25 @@ public class CreateReminderController implements Initializable {
    
    @FXML
    private DatePicker datePicker;
+   
+   @FXML
+   private ChoiceBox<String> choiceBox;
+   
+   @FXML
+   private ChoiceBox<Integer> hours;
+   
+   @FXML
+   private ChoiceBox<String> minutes;
   
    @Override
    public void initialize(URL location, ResourceBundle resources) {
  
-       // TODO (don't really need to do anything here).
-      
+       choiceBox.setValue("PM");
+       choiceBox.setItems(timeList);
+       hours.setValue(12);
+       hours.setItems(hourList);
+       minutes.setValue("00");
+       minutes.setItems(minuteList);
    }
  
    // When user click on createButton
@@ -51,11 +67,13 @@ public class CreateReminderController implements Initializable {
 	       
 		   System.out.println("Reminder Created!");
 	       
-	       Reminder newReminder = new Reminder(datePicker.getValue().getMonth().name(),Integer.toString(datePicker.getValue().getDayOfMonth()),timeData.getText(),messageData.getText());
+	       Reminder newReminder = new Reminder(datePicker.getValue().getMonth().name(), Integer.toString(datePicker.getValue().getDayOfMonth()), 
+	    		   Integer.toString(hours.getValue()) + ":" + minutes.getValue() + " " + choiceBox.getValue(), messageData.getText());
 	       
 	       ReminderApplication.list.addToLast(newReminder);
 	       
-	       timeData.clear();
+	       hours.setValue(12);
+	       minutes.setValue("00");
 	       messageData.clear();
 	       datePicker.getEditor().clear();
 	   }
@@ -68,5 +86,6 @@ public class CreateReminderController implements Initializable {
 	  Stage stage = (Stage) closeButton.getScene().getWindow();
 	  stage.close();
   }
+  
    
 }
