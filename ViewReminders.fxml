@@ -11,7 +11,8 @@
         <columns>
           <TableColumn fx:id="dateCol" prefWidth="111.0" text="Date" />
           <TableColumn fx:id="timeCol" prefWidth="68.0" text="Time" />
-            <TableColumn fx:id="messageCol" prefWidth="220.0" text="Message" />
+            <TableColumn fx:id="messageCol" prefWidth="182.0" text="Message" />
+            <TableColumn fx:id="deleteReminder" prefWidth="38.0" text="X" />
         </columns>
       </TableView>
    </children>

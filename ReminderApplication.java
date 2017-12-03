@@ -1,5 +1,6 @@
 package reminderApplication;
 	
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -8,7 +9,7 @@ import javafx.scene.Scene;
 
 
 
-public class ReminderApplication extends Application{
+public class ReminderApplication extends Application{	
 	
 	//DList that contains reminder objects
 	protected static DList<Reminder> list = new DList<Reminder>();
@@ -18,6 +19,8 @@ public class ReminderApplication extends Application{
 
 			//Read file fxml and draw interface
 			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+			
+			System.out.println();
 			
 			primaryStage.setTitle("My Application");
 			primaryStage.setScene(new Scene(root));

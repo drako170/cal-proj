@@ -1,15 +1,19 @@
 package reminderApplication;
 
+import javafx.scene.control.Button;
+
 public class Table {
 	
 	protected String date;
 	protected String time;
 	protected String message;
+	protected Button button;
 	
-	public Table(String date, String time, String message) {
+	public Table(String date, String time, String message, Button button) {
 		this.date = date;
 		this.time = time;
 		this.message = message;
+		this.button=button;
 	}
 
 	public String getDate() {
@@ -35,7 +39,10 @@ public class Table {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
+	
+	public Button getButton(){
+		return button;
+	}
 	
 	
 }

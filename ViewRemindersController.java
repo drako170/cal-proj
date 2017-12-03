@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +29,9 @@ public class ViewRemindersController implements Initializable {
 	@FXML
     TableColumn<Table, String> messageCol;
 	
+	@FXML
+	TableColumn<Table, Button> deleteReminder;
+	
 	private ObservableList<Table> getReminders(){
 		
 		ObservableList<Table> reminders = FXCollections.observableArrayList();
@@ -42,8 +46,9 @@ public class ViewRemindersController implements Initializable {
 	 		   String date = item.getDate();
 	 		   String time = item.getTime();
 	 		   String message = item.getMessage();
+	 		   Button button = new Button("X");
 	 		   
-	 		   reminders.add(new Table(date, time, message));
+	 		   reminders.add(new Table(date, time, message, button));
 	 		   
 	 		   node = (DLLNode<Reminder>) node.getLink();
 	 	}
@@ -57,6 +62,7 @@ public class ViewRemindersController implements Initializable {
 		dateCol.setCellValueFactory(new PropertyValueFactory<Table, String>("date"));
 		timeCol.setCellValueFactory(new PropertyValueFactory<Table, String>("time"));
 		messageCol.setCellValueFactory(new PropertyValueFactory<Table, String>("message"));
+		deleteReminder.setCellValueFactory(new PropertyValueFactory<Table, Button>("button"));
 		
 		remindersTable.setItems(getReminders());
 	      

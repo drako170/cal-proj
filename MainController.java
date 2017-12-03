@@ -1,7 +1,10 @@
 package reminderApplication;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+import java.io.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +19,9 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class MainController implements Initializable{
-
+	
+	protected Date date = new Date();
+	
 	@FXML
     private Button createReminderButton;
 
@@ -26,15 +31,21 @@ public class MainController implements Initializable{
     @FXML
     private Button closeButton;
     
-    @FXML
-    private DList<Reminder> list = new DList<Reminder>();
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-  
-        // TODO (don't really need to do anything here).
-       
+    	try {
+			Scanner inputStream = new Scanner(new FileInputStream("reminders.txt"));
+			while(inputStream.hasNext()){
+				String[] rData = inputStream.nextLine().split(",");
+				ReminderApplication.list.addToLast(new Reminder(rData[0], rData[1], rData[2], rData[3]));
+			}
+			inputStream.close();
+		} catch (FileNotFoundException e) {
+			
+		}
     }
+
+    
     
     @FXML
     //when user click on createReminderButton
@@ -99,7 +110,23 @@ public class MainController implements Initializable{
     
     public void closeButtonClicked(ActionEvent event){
   	  Stage stage = (Stage) closeButton.getScene().getWindow();
+  	  
+  	  try {
+		DLLNode<Reminder> root = ReminderApplication.list.header;
+		PrintWriter outputStream = new PrintWriter(new FileOutputStream("reminders.txt"), true);
+		while(root != null){
+			Reminder r = root.getInfo();
+			outputStream.println(r.getMonth() + "," + r.getDay() + "," + r.getTime() + "," + r.getMessage());
+			root = (DLLNode<Reminder>) root.getLink();
+		}
+		outputStream.close();
+		
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	}
+  	  
   	  stage.close();
     }
+    
     
 }

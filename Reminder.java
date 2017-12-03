@@ -13,7 +13,12 @@ public class Reminder {
 		this.month = month;
 		this.day = day;
 		this.time= time;
-		this.message = message;
+		if(message.equals("")){
+			this.message = " ";
+		}
+		else{
+			this.message = message;
+		}
 		date = month + " " + day;
 	}
 
