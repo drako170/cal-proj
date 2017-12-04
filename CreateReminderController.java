@@ -67,7 +67,7 @@ public class CreateReminderController implements Initializable {
 	       
 		   System.out.println("Reminder Created!");
 	       
-	       Reminder newReminder = new Reminder(datePicker.getValue().getMonth().name(), Integer.toString(datePicker.getValue().getDayOfMonth()), 
+	       Reminder newReminder = new Reminder(Integer.toString(datePicker.getValue().getYear()), datePicker.getValue().getMonth().name(), Integer.toString(datePicker.getValue().getDayOfMonth()), 
 	    		   Integer.toString(hours.getValue()) + ":" + minutes.getValue() + " " + choiceBox.getValue(), messageData.getText());
 	       
 	       ReminderApplication.list.addToLast(newReminder);

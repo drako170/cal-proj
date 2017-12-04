@@ -1,15 +1,18 @@
 package reminderApplication;
 
-public class Reminder {
+public class Reminder{
 	
 	private String month;
 	private String day;
 	private String time;
 	private String message;
 	private String date;
+	private String year;
 	
+	private String full;
 	
-	public Reminder(String month, String day, String time, String message){
+	public Reminder(String year, String month, String day, String time, String message){
+		this.year = year;
 		this.month = month;
 		this.day = day;
 		this.time= time;
@@ -20,6 +23,7 @@ public class Reminder {
 			this.message = message;
 		}
 		date = month + " " + day;
+		full = this.year + this.month + this.day + this.time + this.message;
 	}
 
 
@@ -72,7 +76,16 @@ public class Reminder {
 		this.date = date;
 	}
 	
+	public String getYear(){
+		return year;
+	}
 	
-	
+	public void setYear(String year){
+		this.year = year;
+	}
+
+	public String getFull(){
+		return full;
+	}
 
 }

@@ -129,6 +129,7 @@ public class DList<T> {
 		DLLNode<T> u = trailer.getBack();
 		u.setLink(null);
 		trailer = u;		
+		size--;
 	}
 	
 	// implement stack operations void push(T element) and T pop()

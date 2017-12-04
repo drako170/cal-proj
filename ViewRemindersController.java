@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -48,6 +50,43 @@ public class ViewRemindersController implements Initializable {
 	 		   String message = item.getMessage();
 	 		   Button button = new Button("X");
 	 		   
+	 		   button.setOnAction(new EventHandler<ActionEvent>() {
+	 			   @Override public void handle(ActionEvent e){
+	 				   DLLNode<Reminder> root = ReminderApplication.list.header;
+	 				   int index = 0;
+	 				   String s = item.getFull();
+	 				   while(root != null){
+		 				   if(root.getInfo().getFull().equals(s)){
+		 					   DLLNode<Reminder> next = (DLLNode<Reminder>) root.getLink();
+		 					   DLLNode<Reminder> pre = root.getBack();
+		 					   if(next == null && pre == null){
+		 						   ReminderApplication.list.header = null;
+		 						  ReminderApplication.list.trailer = null;
+		 					   }
+		 					   else if(next == null){
+		 						   ReminderApplication.list.removeLast();
+		 					   }
+		 					   else if(pre == null){
+		 						   root.setLink(null);
+		 						   next.setBack(pre);
+		 						   ReminderApplication.list.header = next;
+		 						   ReminderApplication.list.size--;
+		 					   }
+		 					   else{
+		 						   pre.setLink(next);
+		 						   next.setBack(pre);
+		 						   root.setBack(null);
+		 						   root.setLink(null);
+		 						   ReminderApplication.list.size--;
+		 					   }
+		 					   reminders.remove(index);
+		 				   }
+		 				   index++;
+		 				   root = (DLLNode<Reminder>) root.getLink();
+	 				   }
+	 			   }
+	 		   });
+	 		   
 	 		   reminders.add(new Table(date, time, message, button));
 	 		   
 	 		   node = (DLLNode<Reminder>) node.getLink();
@@ -67,6 +106,5 @@ public class ViewRemindersController implements Initializable {
 		remindersTable.setItems(getReminders());
 	      
 	}
-	
 	
 }

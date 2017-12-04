@@ -33,11 +33,12 @@ public class MainController implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	closeButton.setCancelButton(true);
     	try {
 			Scanner inputStream = new Scanner(new FileInputStream("reminders.txt"));
 			while(inputStream.hasNext()){
 				String[] rData = inputStream.nextLine().split(",");
-				ReminderApplication.list.addToLast(new Reminder(rData[0], rData[1], rData[2], rData[3]));
+				ReminderApplication.list.addToLast(new Reminder(rData[0], rData[1], rData[2], rData[3], rData[4]));
 			}
 			inputStream.close();
 		} catch (FileNotFoundException e) {
@@ -116,7 +117,7 @@ public class MainController implements Initializable{
 		PrintWriter outputStream = new PrintWriter(new FileOutputStream("reminders.txt"), true);
 		while(root != null){
 			Reminder r = root.getInfo();
-			outputStream.println(r.getMonth() + "," + r.getDay() + "," + r.getTime() + "," + r.getMessage());
+			outputStream.println(r.getYear() + "," + r.getMonth() + "," + r.getDay() + "," + r.getTime() + "," + r.getMessage());
 			root = (DLLNode<Reminder>) root.getLink();
 		}
 		outputStream.close();
