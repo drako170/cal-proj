@@ -73,6 +73,9 @@ public class CreateReminderController implements Initializable {
 	       
 	       ReminderApplication.list.addToLast(newReminder);
 	       
+	       //call sortList
+	       sortList();
+	       
 	       hours.setValue(12);
 	       minutes.setValue("00");
 	       messageData.clear();
@@ -82,6 +85,38 @@ public class CreateReminderController implements Initializable {
 		   System.out.println(e.getMessage());
 	   }
    }
+   
+@SuppressWarnings("unchecked")
+//sort the list based on occurrence time
+public void sortList() {
+   	  
+   	  DLLNode<Reminder> currNode = ReminderApplication.list.getTrailer();
+   	  
+   	  
+   	  while(currNode.getBack() != null && currNode.getInfo().getCompare().compareTo(((Reminder) currNode.getBack().getInfo()).getCompare()) < 0){
+   		  
+   		  DLLNode<Reminder> nextNode = (DLLNode<Reminder>) currNode.getLink();
+   		  DLLNode<Reminder> preNode = currNode.getBack();
+   		  DLLNode<Reminder> prePreNode = currNode.getBack().getBack();
+   		  
+   		  if(nextNode != null)
+   			  nextNode.setBack(preNode);
+   		  else
+   			  ReminderApplication.list.trailer = preNode;
+   		  
+   		  currNode.setLink(preNode);
+   		  currNode.setBack(prePreNode);
+   		  preNode.setLink(nextNode);
+   		  preNode.setBack(currNode);
+   		  
+   		  if(prePreNode != null)
+   			  prePreNode.setLink(currNode);
+   		  else
+   			ReminderApplication.list.header = currNode;
+   		  
+   	  }
+     }
+
    
   public void closeButtonClicked(ActionEvent event){
 	  Stage stage = (Stage) closeButton.getScene().getWindow();

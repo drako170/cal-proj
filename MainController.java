@@ -1,6 +1,8 @@
 package reminderApplication;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -42,6 +44,10 @@ public class MainController implements Initializable{
 				ReminderApplication.list.addToLast(new Reminder(rData[0], rData[1], rData[2], rData[3], rData[4]));
 			}
 			inputStream.close();
+			
+			
+
+			 
 		} catch (FileNotFoundException e) {
 			
 		}

@@ -31,9 +31,27 @@ public class Reminder{
 			this.message = message;
 		}
 		this.date = month + " " + day;
-		compare = new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth(), 
-				Integer.parseInt(time.substring(0, time.indexOf(":"))), Integer.parseInt(time.substring(time.indexOf(":")+1)));
+		
+		int milHours;
+		if(time.substring(time.indexOf(":")+4).equals("PM")) {
+			if(time.substring(0,time.indexOf(":")).equals("12"))
+				milHours = 12;
+			else
+				milHours = Integer.parseInt(time.substring(0, time.indexOf(":"))) + 12;
+		}
+
+		else {
+			if(time.substring(0,time.indexOf(":")).equals("12"))
+				milHours = 0;
+			else
+				milHours = Integer.parseInt(time.substring(0, time.indexOf(":")));
+		}
+		
+
+		compare = new Date(date.getYear() , date.getMonthValue() - 1, date.getDayOfMonth(), milHours, Integer.parseInt(time.substring(time.indexOf(":")+1, time.indexOf(":") + 3)));
 		full = this.year + this.month + this.day + this.time + this.message;
+		
+	
 	}
 
 	@SuppressWarnings("deprecation")
@@ -59,9 +77,27 @@ public class Reminder{
 		Calendar cal = Calendar.getInstance();
 		if(mon == null)
 			cal.setTime(mon);
-		compare = new Date(Integer.parseInt(year), cal.get(Calendar.MONTH), Integer.parseInt(day), 
-				Integer.parseInt(time.substring(0, time.indexOf(":"))), Integer.parseInt(time.substring(time.indexOf(":")+1, time.indexOf(":")+3)));
+		
+		//mil hours
+		int milHours;
+		if(time.substring(time.indexOf(":")+4).equals("PM")) {
+			if(time.substring(0,time.indexOf(":")).equals("12"))
+				milHours = 12;
+			else
+				milHours = Integer.parseInt(time.substring(0, time.indexOf(":"))) + 12;
+		}
+		else {
+			if(time.substring(0,time.indexOf(":")).equals("12"))
+				milHours = 0;
+			else
+				milHours = Integer.parseInt(time.substring(0, time.indexOf(":")));
+		}
+		
+		compare = new Date(Integer.parseInt(year), cal.get(Calendar.MONTH), Integer.parseInt(day), milHours, Integer.parseInt(time.substring(time.indexOf(":")+1, time.indexOf(":")+3)));
+
 		full = this.year + this.month + this.day + this.time + this.message;
+		
+		System.out.println(cal.get(Calendar.MONTH));
 	}
 
 	public String getMonth() {
@@ -125,4 +161,13 @@ public class Reminder{
 		return full;
 	}
 
+	public Date getCompare() {
+		return compare;
+	}
+
+	public void setCompare(Date compare) {
+		this.compare = compare;
+	}
+
+	
 }

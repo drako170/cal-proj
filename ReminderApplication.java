@@ -1,6 +1,10 @@
 package reminderApplication;
 	
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,6 +20,9 @@ public class ReminderApplication extends Application{
     
 	public void start(Stage primaryStage) {
 		try {
+			Timer timer = new Timer();
+			timer.setDaemon(true);
+			timer.start();
 
 			//Read file fxml and draw interface
 			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
@@ -29,7 +36,12 @@ public class ReminderApplication extends Application{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+	
+		
 	}
+	
+
 
 	public static void main(String[] args) {
 		launch(args);
