@@ -1,5 +1,11 @@
 package reminderApplication;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Reminder{
 	
 	private String month;
@@ -8,9 +14,29 @@ public class Reminder{
 	private String message;
 	private String date;
 	private String year;
+	private Date compare;
 	
 	private String full;
 	
+	@SuppressWarnings("deprecation")
+	public Reminder(String year, String month, String day, String time, String message, LocalDate date){
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		this.time= time;
+		if(message.equals("")){
+			this.message = " ";
+		}
+		else{
+			this.message = message;
+		}
+		this.date = month + " " + day;
+		compare = new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth(), 
+				Integer.parseInt(time.substring(0, time.indexOf(":"))), Integer.parseInt(time.substring(time.indexOf(":")+1)));
+		full = this.year + this.month + this.day + this.time + this.message;
+	}
+
+	@SuppressWarnings("deprecation")
 	public Reminder(String year, String month, String day, String time, String message){
 		this.year = year;
 		this.month = month;
@@ -22,10 +48,21 @@ public class Reminder{
 		else{
 			this.message = message;
 		}
-		date = month + " " + day;
+		this.date = month + " " + day;
+		Date mon = null;
+		try {
+			mon = new SimpleDateFormat("MMMM").parse(month);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Calendar cal = Calendar.getInstance();
+		if(mon == null)
+			cal.setTime(mon);
+		compare = new Date(Integer.parseInt(year), cal.get(Calendar.MONTH), Integer.parseInt(day), 
+				Integer.parseInt(time.substring(0, time.indexOf(":"))), Integer.parseInt(time.substring(time.indexOf(":")+1, time.indexOf(":")+3)));
 		full = this.year + this.month + this.day + this.time + this.message;
 	}
-
 
 	public String getMonth() {
 		return month;
