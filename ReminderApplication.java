@@ -17,17 +17,16 @@ public class ReminderApplication extends Application{
 	
 	//DList that contains reminder objects
 	protected static DList<Reminder> list = new DList<Reminder>();
+	protected static DList<Reminder> log = new DList<Reminder>();
+	protected static Stage primaryStage;
     
 	public void start(Stage primaryStage) {
 		try {
-			Timer timer = new Timer();
-			timer.setDaemon(true);
-			timer.start();
+			
+			this.primaryStage = primaryStage;
 
 			//Read file fxml and draw interface
 			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-			
-			System.out.println();
 			
 			primaryStage.setTitle("My Application");
 			primaryStage.setScene(new Scene(root));

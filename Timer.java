@@ -1,34 +1,38 @@
 package reminderApplication;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
-public class Timer extends Thread{
+public class Timer implements Runnable {
+
 	
-	public void run() {
-		//check for reminder occurrence every minute
-		 try {
-
-			 Date date;
-			 Date compareDate;
-		     while (true) {
-		        date = new Date();
-		        compareDate = new Date(date.getYear() + 1900,date.getMonth() , date.getDate(), date.getHours(), date.getMinutes());
-		        
-		        if(ReminderApplication.list.getHeader() != null && compareDate.compareTo(ReminderApplication.list.getHeader().getInfo().getCompare()) == 0) {
-		        	System.out.println("test");
-		        }
-		        
-		        Thread.sleep(3 * 1000);
-		        System.out.print(compareDate.getHours()+ " ");
-		        System.out.println(ReminderApplication.list.getHeader().getInfo().getCompare().getHours());
-		        
-
-		        Thread.sleep(5 * 1000);
-		    }
-		} catch (InterruptedException e) { 
-		    e.printStackTrace();
-		}
+	public void run(){
+		try {
+       		Window primaryWindow = ReminderApplication.primaryStage;
+       		
+       		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Remind.fxml"));
+       		Parent root1 = (Parent) fxmlLoader.load();
+       		Stage stage = new Stage();
+       		stage.setScene(new Scene(root1));  
+       		stage.setTitle("Reminder");
+       	
+       		// Specifies the modality for new window.
+       		stage.initModality(Modality.WINDOW_MODAL);
+       		
+       		// Specifies the owner Window (parent) for new window
+       		stage.initOwner(primaryWindow);
+       		
+       		 // Set position of second window, related to primary window.
+               stage.setX(primaryWindow.getX());
+               stage.setY(primaryWindow.getY());
+               
+       		stage.show();
+       	} catch(Exception e) {
+       		System.out.println(e.getMessage());
+       	}
 	}
 }

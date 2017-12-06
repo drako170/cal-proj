@@ -96,8 +96,7 @@ public class Reminder{
 		compare = new Date(Integer.parseInt(year), cal.get(Calendar.MONTH), Integer.parseInt(day), milHours, Integer.parseInt(time.substring(time.indexOf(":")+1, time.indexOf(":")+3)));
 
 		full = this.year + this.month + this.day + this.time + this.message;
-		
-		System.out.println(cal.get(Calendar.MONTH));
+
 	}
 
 	public String getMonth() {

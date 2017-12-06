@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reminderApplication.ViewLogController">
+   <children>
+      <TableView fx:id="logTable" prefHeight="800.0" prefWidth="400.0">
+        <columns>
+          <TableColumn fx:id="dateCol" prefWidth="111.0" text="Date" />
+          <TableColumn fx:id="timeCol" prefWidth="68.0" text="Time" />
+            <TableColumn fx:id="messageCol" prefWidth="182.0" text="Message" />
+            <TableColumn fx:id="deleteReminder" prefWidth="38.0" text="X" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -16,5 +16,6 @@
       <Button fx:id="createReminderButton" layoutX="198.0" layoutY="176.0" mnemonicParsing="false" onAction="#createReminder" text="Create Reminder" />
       <Button fx:id="viewReminderButton" layoutX="200.0" layoutY="221.0" mnemonicParsing="false" onAction="#viewReminders" text="View Reminders" />
       <Button fx:id="closeButton" layoutX="228.0" layoutY="266.0" mnemonicParsing="false" onAction="#closeButtonClicked" text="Close" />
+      <Button fx:id="viewLogButton" layoutX="421.0" layoutY="311.0" mnemonicParsing="false" onAction="#viewLog" text="View Log" />
    </children>
 </AnchorPane>

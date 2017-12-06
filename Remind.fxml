@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reminderApplication.RemindController">
+   <children>
+      <Text layoutX="161.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REMINDER" wrappingWidth="178.85546875">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <TextField fx:id="reminderMessage" layoutX="25.0" layoutY="100.0" prefHeight="150.0" prefWidth="450.0" />
+      <Button fx:id="completeButton" layoutX="136.0" layoutY="282.0" mnemonicParsing="false" onAction="#completeReminder" text="Got It!" />
+      <Button fx:id="delayButton" layoutX="269.0" layoutY="282.0" mnemonicParsing="false" onAction="#delayReminder" text="Maybe later..." />
+   </children>
+</AnchorPane>
